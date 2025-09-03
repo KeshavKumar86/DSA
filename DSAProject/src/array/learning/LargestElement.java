@@ -8,7 +8,7 @@ public class LargestElement {
     }
 
     /*
-Efficient Solution:
+Optimal Solution:
 Time Complexity: O(n)
 Space Complexity:O(1)
 */
