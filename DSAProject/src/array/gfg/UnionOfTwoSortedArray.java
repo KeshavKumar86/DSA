@@ -10,23 +10,6 @@ public class UnionOfTwoSortedArray {
         int[] unionArray = unionOptimal(arr1, arr2);
         System.out.println("Union of Array: " + Arrays.toString(unionArray));
     }
-
-    /*
-Naive Solution:
-Time Complexity: O( (n+m)*log(n+m) )
-Space Complexity:O(n+m)
-*/
-    private static Integer[] union(int[] arr1, int[] arr2) {
-        TreeSet<Integer> treeSet = new TreeSet<>();
-        for (int element : arr1) {
-            treeSet.add(element);
-        }
-        for (int element : arr2) {
-            treeSet.add(element);
-        }
-        return treeSet.toArray(new Integer[0]);
-    }
-
     /*
 Optimal Solution:
 Time Complexity: O(n+m)
@@ -82,6 +65,22 @@ Space Complexity:O(n+m)
         }
         return Arrays.copyOf(res, k);
     }
+    /*
+Naive Solution:
+Time Complexity: O( (n+m)*log(n+m) )
+Space Complexity:O(n+m)
+*/
+    private static Integer[] union(int[] arr1, int[] arr2) {
+        TreeSet<Integer> treeSet = new TreeSet<>();
+        for (int element : arr1) {
+            treeSet.add(element);
+        }
+        for (int element : arr2) {
+            treeSet.add(element);
+        }
+        return treeSet.toArray(new Integer[0]);
+    }
+
     /*
     Solution3: Naive Approach: Concatenate + Sort + Remove Duplicates
     Time Complexity: O( (n+m)*log(n+m) )
