@@ -5,7 +5,21 @@ import java.util.Arrays;
 public class SingleNumber {
     public static void main(String[] args) {
         int[] arr = {4, 1, 2, 1, 2};
-        System.out.println("Single Number: " + singleNumber(arr));
+        System.out.println("Single Number: " + singleNumberOptimal(arr));
+    }
+
+    /*
+Optimal Solution:
+Time Complexity: O(n)
+Space Complexity:O(1)
+*/
+    private static int singleNumberOptimal(int[] arr) {
+        int result = 0;
+        for (int element : arr) {
+            result ^= element;
+
+        }
+        return result;
     }
 
     /*
