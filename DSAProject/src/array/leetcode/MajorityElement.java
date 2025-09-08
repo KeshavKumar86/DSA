@@ -19,7 +19,7 @@ Space Complexity:O(1)
         for (int element : arr) {
             if (count == 0) {
                 majorityElement = element;
-                count++;
+                count = 1;
             } else if (element != majorityElement) {
                 count--;
             } else {
