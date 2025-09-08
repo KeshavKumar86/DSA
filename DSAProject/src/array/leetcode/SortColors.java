@@ -13,7 +13,7 @@ public class SortColors {
     /*
 Optimal Solution:
 Time Complexity: O(n)
-Space Complexity:O(n)
+Space Complexity:O(1)
 */
     private static void sortColorsOptimal(int[] arr) {
         int i = 0, j = 0;
