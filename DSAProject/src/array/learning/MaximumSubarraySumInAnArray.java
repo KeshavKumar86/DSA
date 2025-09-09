@@ -5,7 +5,6 @@ import java.util.Arrays;
 public class MaximumSubarraySumInAnArray {
     public static void main(String[] args) {
         int[] arr = {5, 4, -1, 7, 8};
-        int[] res = {-1, -1, -1};
         System.out.println("Maximum Subarray: " + Arrays.toString(maximumSumSubarray(arr)));
 
     }
