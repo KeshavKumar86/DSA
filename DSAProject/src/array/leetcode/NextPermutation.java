@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class NextPermutation {
     public static void main(String[] args) {
-        int[] arr = {4,1, 3, 3};
+        int[] arr = {4, 1, 3, 3};
         System.out.println("Original Array: " + Arrays.toString(arr));
         nextPermutationOptimal(arr);
         System.out.println("Next Permutation: " + Arrays.toString(arr));
@@ -20,11 +20,22 @@ Space Complexity:O(1)
         boolean flag = false;
         for (int i = n - 1; i > 0; i--) {
             if (arr[i] > arr[i - 1]) {
-                int index = nextGreater(arr, i - 1, n - 1, arr[i - 1]);
-                //swap i-1 and next greater
-                int temp = arr[i - 1];
-                arr[i - 1] = arr[index];
-                arr[index] = temp;
+                int deflectionPoint = i;
+                int toSwap = i - 1;
+                int nextGreater = Integer.MAX_VALUE;
+                int nextGreaterIndex = deflectionPoint;
+                while (deflectionPoint < n) {
+                    if (arr[deflectionPoint] > toSwap) {
+                        if (arr[deflectionPoint] <= nextGreater) {
+                            nextGreater = arr[deflectionPoint];
+                            nextGreaterIndex = deflectionPoint;
+                            deflectionPoint++;
+                        }
+                    }
+                }
+                int temp = arr[toSwap];
+                arr[toSwap] = arr[nextGreaterIndex];
+                arr[nextGreaterIndex] = temp;
                 reverse(arr, i, n - 1);
                 flag = true;
                 break;
@@ -57,11 +68,25 @@ Space Complexity:O(n)
         boolean flag = false;
         for (int i = n - 1; i > 0; i--) {
             if (arr[i] > arr[i - 1]) {
-                int index = nextGreater(arr, i - 1, n - 1, arr[i - 1]);
-                //swap i-1 and next greater
-                int temp = arr[i - 1];
-                arr[i - 1] = arr[index];
-                arr[index] = temp;
+                //int index = nextGreater(arr, i - 1, n - 1, arr[i - 1]);
+                int deflectionPoint = i;
+                int toSwap = i - 1;
+                int nextGreater = Integer.MAX_VALUE;
+                int nextGreaterIndex = deflectionPoint;
+                while (deflectionPoint < n) {
+                    if (arr[deflectionPoint] > toSwap) {
+                        if (arr[deflectionPoint] <= nextGreater) {
+                            nextGreater = arr[deflectionPoint];
+                            nextGreaterIndex = deflectionPoint;
+                            deflectionPoint++;
+                        }
+                    }
+                }
+
+                //swap toSwap and next greater element
+                int temp = arr[toSwap];
+                arr[toSwap] = arr[nextGreaterIndex];
+                arr[nextGreaterIndex] = temp;
                 partSort(arr, i, n - 1);
                 flag = true;
                 break;
@@ -70,20 +95,6 @@ Space Complexity:O(n)
         if (!flag) {
             partSort(arr, 0, n - 1);
         }
-    }
-
-    private static int nextGreater(int[] arr, int start, int end, int element) {
-        int nextGreaterIndex = end;
-        int nextGreater = Integer.MAX_VALUE;
-        for (int i = start; i <= end; i++) {
-            if (arr[i] > element) {
-                if (arr[i] <= nextGreater) {
-                    nextGreater = arr[i];
-                    nextGreaterIndex = i;
-                }
-            }
-        }
-        return nextGreaterIndex;
     }
 
     private static void partSort(int[] arr, int a, int b) {
