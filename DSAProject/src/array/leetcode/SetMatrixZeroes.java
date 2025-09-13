@@ -28,40 +28,34 @@ Space Complexity:O(1)
     private static void setZeroes(int[][] mat) {
         int n = mat.length;
         int m = mat[0].length;
+        int rowZero = 1;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                if (i != 0 && j != 0 && mat[i][j] == 0) {
-                    mat[i][0] = 0;
+                if (mat[i][j] == 0) {
                     mat[0][j] = 0;
+                    if (i > 0) {
+                        mat[i][0] = 0;
+                    } else {
+                        rowZero = 0;
+                    }
                 }
             }
         }
-        for (int[] arrayElement : mat) {
-            System.out.println(Arrays.toString(arrayElement));
-        }
-        int corner = mat[0][0];
         for (int i = 1; i < n; i++) {
-            if (mat[i][0] == 0) {
-                int j = 0;
-                while (j < m) {
-                    mat[i][j++] = 0;
+            for (int j = 1; j < m; j++) {
+                if (mat[i][0] == 0 || mat[0][j] == 0) {
+                    mat[i][j] = 0;
                 }
             }
         }
-        for (int j = 1; j < m; j++) {
-            if (mat[0][j] == 0) {
-                int i = 0;
-                while (i < n) {
-                    mat[i++][j] = 0;
-                }
-            }
-        }
-        if (corner == 0) {
-            for (int j = 0; j < m; j++) {
-                mat[0][j] = 0;
-            }
+        if (mat[0][0] == 0) {
             for (int i = 0; i < n; i++) {
                 mat[i][0] = 0;
+            }
+        }
+        if (rowZero == 0) {
+            for (int j = 0; j < m; j++) {
+                mat[0][j] = 0;
             }
         }
     }
