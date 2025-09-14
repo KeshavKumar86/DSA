@@ -16,7 +16,7 @@ public class SpiralMatrix {
     /*
 Optimal Solution:
 Time Complexity: O(n*m)
-Space Complexity:O(1)
+Space Complexity:O(1)(excluding output)
 */
     private static List<Integer> spiralOrder(int[][] matrix) {
         int rs = 0, re = matrix.length;
