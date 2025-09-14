@@ -1,4 +1,4 @@
-package array.learning;
+package array.gfg;
 
 import java.util.Arrays;
 
