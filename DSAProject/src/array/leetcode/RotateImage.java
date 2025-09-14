@@ -19,6 +19,7 @@ public class RotateImage {
             System.out.println(Arrays.toString(arrayElement));
         }
     }
+
     /*
 Naive Solution:
 Time Complexity: O(n*m)
@@ -28,12 +29,10 @@ Space Complexity:O(n*m)
         int n = matrix.length;
         //1. Take the transpose
         for (int row = 0; row < n; row++) {
-            for (int col = 0; col < n; col++) {
-                if (row < col) {
-                    int temp = matrix[row][col];
-                    matrix[row][col] = matrix[col][row];
-                    matrix[col][row] = temp;
-                }
+            for (int col = row + 1; col < n; col++) {
+                int temp = matrix[row][col];
+                matrix[row][col] = matrix[col][row];
+                matrix[col][row] = temp;
             }
         }
         for (int[] arrayElement : matrix) {
