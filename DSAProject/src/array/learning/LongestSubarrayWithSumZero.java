@@ -1,4 +1,4 @@
-package array.gfg;
+package array.learning;
 
 import java.util.HashMap;
 import java.util.Map;
