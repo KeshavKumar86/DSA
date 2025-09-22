@@ -39,7 +39,7 @@ Time Complexity: O(n)
 Space Complexity:O(n)
 */
     /*
-Optimal Solution:
+Naive Solution:
 Time Complexity: O(n^2)
 Space Complexity:O(n)
 */
