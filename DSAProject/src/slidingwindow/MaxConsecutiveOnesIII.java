@@ -1,4 +1,4 @@
-package array.leetcode;
+package slidingwindow;
 
 public class MaxConsecutiveOnesIII {
     public static void main(String[] args) {

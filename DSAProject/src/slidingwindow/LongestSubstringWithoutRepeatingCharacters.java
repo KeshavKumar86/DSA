@@ -1,4 +1,4 @@
-package array.leetcode;
+package slidingwindow;
 
 import java.util.HashSet;
 import java.util.Set;
