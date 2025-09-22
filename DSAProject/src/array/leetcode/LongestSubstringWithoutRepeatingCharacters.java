@@ -10,7 +10,7 @@ public class LongestSubstringWithoutRepeatingCharacters {
     }
 
     /*
-Optimal Solution1:
+Optimal Solution:
 Time Complexity: O(n)
 Space Complexity:O(n)
 */
