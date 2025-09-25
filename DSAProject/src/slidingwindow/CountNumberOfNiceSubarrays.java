@@ -7,7 +7,11 @@ public class CountNumberOfNiceSubarrays {
         System.out.println("Total Sub-arrays: " + numberOfSubarraysOptimal(arr, k));
 
     }
-
+    /*
+Optimal Solution:
+Time Complexity: O(n)
+Space Complexity:O(1)
+*/
     private static int numberOfSubarrays(int[] nums, int k) {
         return sumLessEqualToGoal(nums, k) - sumLessEqualToGoal(nums, k - 1);
     }
