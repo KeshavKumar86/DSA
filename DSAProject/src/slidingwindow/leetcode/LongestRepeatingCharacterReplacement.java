@@ -1,4 +1,4 @@
-package slidingwindow;
+package slidingwindow.leetcode;
 
 public class LongestRepeatingCharacterReplacement {
     public static void main(String[] args) {
