@@ -9,7 +9,7 @@ public class MaximumPointsYouCanObtainFromCards {
     }
 
     /*
-Optimal Solution:
+Naive Solution:
 Time Complexity: O(2^k)
 Space Complexity:O(k)
 */
