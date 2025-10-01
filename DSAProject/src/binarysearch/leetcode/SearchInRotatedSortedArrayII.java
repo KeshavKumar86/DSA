@@ -9,7 +9,7 @@ public class SearchInRotatedSortedArrayII {
 
     /*
 Optimal Solution:
-Time Complexity: O(n)
+Time Complexity: O(logn)
 Space Complexity:O(1)
 */
     private static boolean search(int[] nums, int target) {
