@@ -7,6 +7,11 @@ public class KokoEatingBananas {
         System.out.println("Minimum Eating Speed: " + minEatingSpeedOptimal(piles, h));
     }
 
+    /*
+Optimal Solution:
+Time Complexity: O( n*log(max(piles)) )
+Space Complexity:O(1)
+*/
     private static int minEatingSpeedOptimal(int[] piles, int h) {
         int left = 1, right = max(piles);
         int res = right;
@@ -21,7 +26,11 @@ public class KokoEatingBananas {
         }
         return res;
     }
-
+    /*
+Naive Solution:
+Time Complexity: O(n*m)
+Space Complexity:O(1)
+*/
     private static int minEatingSpeed(int[] piles, int h) {
         int max = max(piles);
         for (int i = 1; i <= max; i++) {
