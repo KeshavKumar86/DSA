@@ -46,7 +46,7 @@ Space Complexity:O(n)
             if (map.containsKey(prefixSum - k)) {
                 maxLength = Math.max(maxLength, i - map.get(prefixSum - k));
             }
-            map.put(prefixSum, i);
+            map.putIfAbsent(prefixSum, i);
         }
         return maxLength;
     }
