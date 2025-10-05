@@ -30,7 +30,7 @@ Space Complexity:O(1)
     }
 
     /*
-Optimal Solution:
+Naive Solution:
 Time Complexity: O(n * sum(weights) - max(weights))
 Space Complexity:O(1)
 */
