@@ -52,7 +52,7 @@ public class SearchA2DMatrix {
 
     /*
  Optimal Solution:
- Time Complexity: O(logm*n)
+ Time Complexity: O(log(m*n))
  Space Complexity:O(1)
  */
     private static boolean searchMatrixII(int[][] matrix, int target) {
@@ -73,4 +73,30 @@ public class SearchA2DMatrix {
         }
         return false;
     }
+
+    /*
+ Better Solution:
+ Time Complexity: O(n+m)
+ Space Complexity:O(1)
+ */
+    private static boolean searchMatrixBetter(int[][] matrix, int target) {
+        int n = matrix.length;
+        int m = matrix[0].length;
+        int row = 0, col = m - 1;
+        while (row < n && col >= 0) {
+            if (matrix[row][col] == target) {
+                return true;
+            } else if (target < matrix[row][col]) {
+                col--;
+            } else {
+                row++;
+            }
+        }
+        return false;
+    }
+        /*
+ Naive Solution: Iterate each element and check if it is equal to target (linear search)
+ Time Complexity: O(n*m)
+ Space Complexity:O(1)
+ */
 }
