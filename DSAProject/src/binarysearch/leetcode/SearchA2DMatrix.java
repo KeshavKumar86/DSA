@@ -7,7 +7,6 @@ public class SearchA2DMatrix {
         matrix[1] = new int[]{10, 11, 16, 20};
         matrix[2] = new int[]{23, 30, 34, 60};
         int target = 12;
-        //matrix[3] = new int[]{0, 0, 0, 0};
         System.out.println("Is " + target + " present: " + searchMatrix(matrix, target));
     }
 
