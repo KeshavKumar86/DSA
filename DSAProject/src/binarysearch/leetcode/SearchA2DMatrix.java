@@ -10,6 +10,7 @@ public class SearchA2DMatrix {
         //matrix[3] = new int[]{0, 0, 0, 0};
         System.out.println("Is " + target + " present: " + searchMatrix(matrix, target));
     }
+
     /*
  Optimal Solution:
  Time Complexity: O(logn + logm)
@@ -42,6 +43,30 @@ public class SearchA2DMatrix {
             if (matrix[row][mid] == target) {
                 return true;
             } else if (matrix[row][mid] > target) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+        return false;
+    }
+
+    /*
+ Optimal Solution:
+ Time Complexity: O(logm*n)
+ Space Complexity:O(1)
+ */
+    private static boolean searchMatrixII(int[][] matrix, int target) {
+        int n = matrix.length;
+        int m = matrix[0].length;
+        int left = 0, right = m * n - 1;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            int row = mid / m;
+            int col = mid % m;
+            if (matrix[row][col] == target) {
+                return true;
+            } else if (matrix[row][col] > target) {
                 right = mid - 1;
             } else {
                 left = mid + 1;
