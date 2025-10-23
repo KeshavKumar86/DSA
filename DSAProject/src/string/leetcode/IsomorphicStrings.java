@@ -8,12 +8,12 @@ public class IsomorphicStrings {
         String s = "bada", t = "baba";
         System.out.println("Is " + s + " and " + t + " are Isomorphic: " + isIsomorphic(s, t));
     }
-
+    /*
+ Optimal Solution:
+ Time Complexity: O(n)
+ Space Complexity:O(n)
+ */
     private static boolean isIsomorphic(String s, String t) {
-        return isIsomorphicOneWay(s, t);
-    }
-
-    private static boolean isIsomorphicOneWay(String s, String t) {
         Map<Character, Character> mapST = new HashMap<>();
         Map<Character, Character> mapTS = new HashMap<>();
         int n = s.length();
@@ -31,9 +31,13 @@ public class IsomorphicStrings {
         }
         return true;
     }
-
+    /*
+Naive Solution:
+Time Complexity: O(n^2)
+Space Complexity:O(1)
+*/
     public boolean isIsomorphicNaive(String s, String t) {
-        return isIsomorphicOneWay(s, t) && isIsomorphicOneWay(t, s);
+        return isIsomorphicOneWayNaive(s, t) && isIsomorphicOneWayNaive(t, s);
     }
 
     public boolean isIsomorphicOneWayNaive(String s, String t) {
