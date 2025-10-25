@@ -7,18 +7,13 @@ public class LinkedListInsertionAtBeginning {
         //original list
         Node temp = node1;
         System.out.println("Original List");
-        while (temp != null) {
-            System.out.print(temp.data + "->");
-            temp = temp.next;
-        }
+        printList(temp);
         int x = 1;
         temp = insertAtFront(node1, x);
         System.out.println("\n" + "List After Insertion at beginning");
-        while (temp != null) {
-            System.out.print(temp.data + "->");
-            temp = temp.next;
-        }
+        printList(temp);
     }
+
     /*
  Optimal Solution:
  Time Complexity: O(1)
@@ -29,6 +24,14 @@ public class LinkedListInsertionAtBeginning {
         node.next = head;
         head = node;
         return head;
+    }
+
+    public static void printList(Node head) {
+        while (head != null) {
+            System.out.print(head.data + " -> ");
+            head = head.next;
+        }
+        System.out.println();
     }
 }
 
