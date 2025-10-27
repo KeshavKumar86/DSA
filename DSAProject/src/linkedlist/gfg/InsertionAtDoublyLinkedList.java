@@ -6,7 +6,6 @@ public class InsertionAtDoublyLinkedList {
         doublyNode1.next = new DoublyNode(2);
         doublyNode1.next.next = new DoublyNode(3);
         doublyNode1.next.next.next = new DoublyNode(4);
-        //doublyNode1.next.next.next.next = new DoublyNode(5);
         printList(doublyNode1);
         int key = 44;
         int p = 3;
