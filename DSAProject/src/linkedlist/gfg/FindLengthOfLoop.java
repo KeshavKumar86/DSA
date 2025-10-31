@@ -1,5 +1,8 @@
 package linkedlist.gfg;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class FindLengthOfLoop {
     public static void main(String[] args) {
         Node head = new Node(1);
@@ -8,7 +11,7 @@ public class FindLengthOfLoop {
         head.next.next = new Node(3);
         head.next.next.next = new Node(4);
         head.next.next.next.next = secondNode;
-        System.out.println("Cycle At Node: " + lengthOfLoop(head));
+        System.out.println("Cycle At Node: " + lengthOfLoopNaive(head));
     }
 
     /*
@@ -34,5 +37,24 @@ public class FindLengthOfLoop {
             length++;
         } while (slow != fast);
         return length;
+    }
+
+    /*
+ Naive Solution:
+ Time Complexity: O(n)
+ Space Complexity:O(n)
+ */
+    private static int lengthOfLoopNaive(Node head) {
+        Map<Node, Integer> map = new HashMap<>();
+        int counter = 0;
+        while (head != null) {
+            if (map.containsKey(head)) {
+                return counter - map.get(head);
+            }
+            map.put(head, counter);
+            head = head.next;
+            counter++;
+        }
+        return 0;
     }
 }
