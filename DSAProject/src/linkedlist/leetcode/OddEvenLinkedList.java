@@ -59,7 +59,6 @@ public class OddEvenLinkedList {
         if (curr != null) {
             oddList.add(curr.val);
         }
-        //add odds then evens in the list
         curr = head;
         for (int val : oddList) {
             curr.val = val;
