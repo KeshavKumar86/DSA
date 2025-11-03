@@ -61,7 +61,7 @@ Space Complexity:O(1)
     }
         /*
 Naive Solution: Just Reverse the list and delete the nth node from the start and then reverse again
-Time Complexity: O(2*n)
+Time Complexity: O(3*n)
 Space Complexity:O(1)
 */
 }
