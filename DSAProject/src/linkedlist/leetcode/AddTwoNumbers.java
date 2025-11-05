@@ -1,7 +1,21 @@
 package linkedlist.leetcode;
 
+import static linkedlist.leetcode.DeleteNodeInALinkedList.printList;
+
 public class AddTwoNumbers {
     public static void main(String[] args) {
+        ListNode headA = new ListNode(5);
+        headA.next = new ListNode(6);
+        headA.next.next = new ListNode(1);
+        headA.next.next.next = new ListNode(8);
+        headA.next.next.next.next = new ListNode(4);
+        headA.next.next.next.next.next = new ListNode(5);
+        ListNode headB = new ListNode(4);
+        headB.next = new ListNode(1);
+        headB.next.next = new ListNode(9);
+        printList(headA);
+        ListNode updateHead = addTwoNumbers(headA, headB);
+        printList(updateHead);
     }
 
     /*
