@@ -17,9 +17,10 @@ public class IntersectionOfTwoLinkedLists {
         headB.next = new ListNode(1);
         headB.next.next = headA.next.next.next;
         printList(headA);
-        ListNode updateHead = getIntersectionNode(headA, headB);
+        ListNode updateHead = getIntersectionNodeOptimal(headA, headB);
         printList(updateHead);
     }
+
     /*
    Naive Solution:
    Time Complexity: O(n)
@@ -40,5 +41,19 @@ public class IntersectionOfTwoLinkedLists {
             curr = curr.next;
         }
         return curr;
+    }
+
+    /*
+     Optimal Solution:
+     Time Complexity: O(2*n)
+     Space Complexity:O(1)
+     */
+    private static ListNode getIntersectionNodeOptimal(ListNode headA, ListNode headB) {
+        ListNode curr1 = headA, curr2 = headB;
+        while (curr1 != curr2) {
+            curr1 = curr1 == null ? headB : curr1.next;
+            curr2 = curr2 == null ? headA : curr2.next;
+        }
+        return curr1;
     }
 }
