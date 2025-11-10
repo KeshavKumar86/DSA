@@ -34,4 +34,9 @@ public class FindPairsWithGivenSumInDoublyLinkedList {
         }
         return result;
     }
+        /*
+ Naive Solution: Store the elements in the arrayList and just apply 2 pointer technique.
+ Time Complexity: O(2*n)
+ Space Complexity:O(n)
+ */
 }
