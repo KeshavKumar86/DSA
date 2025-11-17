@@ -23,24 +23,45 @@ public class ValidParentheses {
             char c = s.charAt(i);
             if (c == '(' || c == '[' || c == '{') {
                 stack.push(c);
-            }
-            if (c == ')') {
-                if (stack.empty() || stack.peek() != '(') {
+            } else {
+                if (stack.empty()) {
                     return false;
                 }
-                stack.pop();
-            }
-            if (c == ']') {
-                if (stack.empty() || stack.peek() != '[') {
+                char top = stack.pop();
+                if (c == ')' && top != '(') {
                     return false;
                 }
-                stack.pop();
-            }
-            if (c == '}') {
-                if (stack.empty() || stack.peek() != '{') {
+                if (c == ']' && top != '[') {
                     return false;
                 }
-                stack.pop();
+                if (c == '}' && top != '{') {
+                    return false;
+                }
+            }
+
+        }
+        return stack.empty();
+    }
+
+    /*
+       Optimal Solution:
+       Time Complexity: O(n)
+       Space Complexity: O(n)
+       */
+    private static boolean isValidStandard(String s) {
+        int length = s.length();
+        Stack<Character> stack = new Stack<>();
+        for (int i = 0; i < length; i++) {
+            if (s.charAt(i) == '(') {
+                stack.push(')');
+            } else if (s.charAt(i) == '[') {
+                stack.push(']');
+            } else if (s.charAt(i) == '{') {
+                stack.push('}');
+            } else {
+                if (stack.empty() || stack.pop() != s.charAt(i)) {
+                    return false;
+                }
             }
         }
         return stack.empty();
