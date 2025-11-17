@@ -1,4 +1,4 @@
-package stack.gfg;
+package queue.gfg;
 
 public class QueueUsingLinkedList {
     public static void main(String[] args) {
@@ -6,6 +6,11 @@ public class QueueUsingLinkedList {
     }
 }
 
+/*
+Optimal Solution:
+Time Complexity: enqueue O(1), dequeue O(1), getFront O(1), size O(1), empty O(1)
+Space Complexity:O(n)
+*/
 class Node {
     int data;
     Node next;
@@ -17,12 +22,12 @@ class Node {
 }
 
 // Queue class
-class myQueue {
+class MyQueue {
     Node front;
     Node rear;
     int size;
 
-    public myQueue() {
+    public MyQueue() {
         // Initialize your data members
         front = null;
         rear = null;

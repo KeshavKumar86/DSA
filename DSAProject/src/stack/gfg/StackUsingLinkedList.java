@@ -8,6 +8,11 @@ public class StackUsingLinkedList {
     }
 }
 
+/*
+Optimal Solution: Maintain queue order at every step
+Time Complexity: push O(1), pop O(1), top O(1), empty O(1)
+Space Complexity:O(n)
+*/
 class myStack {
 
     LinkedList<Integer> stack;
