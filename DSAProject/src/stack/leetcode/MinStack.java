@@ -12,10 +12,10 @@ public class MinStack {
 }
 
 /*
-      Optimal Solution:
-      Time Complexity: O(1) for all operations
-      Space Complexity: O(n)
-      */
+Optimal Solution:
+Time Complexity: O(1) for all operations
+Space Complexity: O(n)
+*/
 class MinStackClassOptimal {
     Deque<Integer[]> stack;
 
