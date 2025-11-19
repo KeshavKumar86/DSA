@@ -3,16 +3,19 @@ package stack.leetcode;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Stack;
 
 public class NextGreaterElementI {
     public static void main(String[] args) {
         int[] nums1 = {4, 1, 2, 0};
         int[] nums2 = {3, 4, 2, 0, 1};
-        System.out.println("Next Greater Element: " + Arrays.toString(nextGreaterElement(nums1, nums2)));
+        System.out.println("Next Greater Element: " + Arrays.toString(nextGreaterElementOptimal
+                (nums1, nums2)));
     }
+
     /*
     Naive Solution:
-    Time Complexity: O(n^2) for all operations
+    Time Complexity: O(n*m)
     Space Complexity: O(n)
     */
     private static int[] nextGreaterElement(int[] nums1, int[] nums2) {
@@ -40,5 +43,31 @@ public class NextGreaterElementI {
             }
         }
         return -1;
+    }
+
+    /*
+    Optimal Solution: Using monotonic stack
+    Time Complexity: O(n+m)
+    Space Complexity: O(n)
+    */
+    private static int[] nextGreaterElementOptimal(int[] nums1, int[] nums2) {
+        Map<Integer, Integer> indexMap = new HashMap<>();
+        Stack<Integer> stack = new Stack<>();
+        int[] res = new int[nums1.length];
+        for (int i = 0; i < nums1.length; i++) {
+            indexMap.put(nums1[i], i);
+            res[i] = -1;
+        }
+        for (int element : nums2) {
+            while (!stack.isEmpty() && stack.peek() < element) {
+                int num = stack.pop();
+                int index = indexMap.get(num);
+                res[index] = element;
+            }
+            if (indexMap.containsKey(element)) {
+                stack.push(element);
+            }
+        }
+        return res;
     }
 }
