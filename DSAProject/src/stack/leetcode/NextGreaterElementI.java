@@ -7,8 +7,8 @@ import java.util.Stack;
 
 public class NextGreaterElementI {
     public static void main(String[] args) {
-        int[] nums1 = {4, 1, 2, 0};
-        int[] nums2 = {3, 4, 2, 0, 1};
+        int[] nums1 = {2, 4};
+        int[] nums2 = {1, 2, 3, 4};
         System.out.println("Next Greater Element: " + Arrays.toString(nextGreaterElementOptimal
                 (nums1, nums2)));
     }
