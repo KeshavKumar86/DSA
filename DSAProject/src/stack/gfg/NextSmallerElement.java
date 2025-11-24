@@ -29,7 +29,11 @@ public class NextSmallerElement {
         }
         return res;
     }
-
+    /*
+  Naive Solution:
+  Time Complexity: O(n^2)
+  Space Complexity:O(1)
+  */
     private static ArrayList<Integer> nextSmallerEleNaive(int[] arr) {
         int n = arr.length;
         ArrayList<Integer> res = new ArrayList<>();
