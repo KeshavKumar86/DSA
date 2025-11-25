@@ -32,6 +32,7 @@ public class TrappingRainWater {
         }
         return res;
     }
+
     /*
   Better Solution:
   Time Complexity: O(3*n)
@@ -63,4 +64,11 @@ public class TrappingRainWater {
         }
         return res;
     }
+       /*
+  Naive Solution: Water trapped at a bar is the min(max(bar at right), max(bar at left)-height of the
+  bar, So for every index, find the max in the left and max in the right and calculate water trapped
+  at that index.
+  Time Complexity: O(n^2)
+  Space Complexity:O(1)
+  */
 }
