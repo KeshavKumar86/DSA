@@ -10,14 +10,13 @@ public class AsteroidCollision {
         System.out.println("Final Result: " + Arrays.toString(asteroidCollision(arr)));
     }
 
-        /*
-         Optimal Solution:
-         Time Complexity: O(n)
-         Space Complexity:O(n)
-       */
+/*
+ Optimal Solution:
+ Time Complexity: O(n)
+ Space Complexity:O(n)
+*/
     private static int[] asteroidCollision(int[] asteroids) {
         Deque<Integer> stack = new ArrayDeque<>();
-        int n = asteroids.length;
         for (int asteroid : asteroids) {
             while (!stack.isEmpty() && stack.peek() > 0 && asteroid < 0 && stack.peek() < Math.abs(asteroid)) {
                 stack.pop();
@@ -39,4 +38,9 @@ public class AsteroidCollision {
         }
         return res;
     }
+ /*
+ Naive Solution: Just use the above logic but without using stack.
+ Time Complexity: O(n^2)
+ Space Complexity:O(1)
+*/
 }
