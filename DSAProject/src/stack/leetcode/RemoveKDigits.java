@@ -17,22 +17,24 @@ public class RemoveKDigits {
     */
     private static String removeKdigits(String num, int k) {
         int n = num.length();
-        Deque<Integer> stack = new ArrayDeque<>();
+        Deque<Character> stack = new ArrayDeque<>();
         for (int i = 0; i < n; i++) {
-            if (k > 0) {
-                while (!stack.isEmpty() && stack.peek() > (num.charAt(i) - '0') && k > 0) {
-                    stack.pop();
-                    k--;
-                }
+            while (!stack.isEmpty() && stack.peek() > (num.charAt(i)) && k > 0) {
+                stack.pop();
+                k--;
+
             }
-            stack.push(num.charAt(i) - '0');
+            stack.push(num.charAt(i));
+        }
+        // if k is not zero remove k digits
+        while (!stack.isEmpty() && k > 0) {
+            stack.pop();
+            k--;
         }
         StringBuilder res = new StringBuilder();
         while (!stack.isEmpty()) {
             res.append(stack.pop());
         }
-        // if k is not zero remove k digits
-        res = new StringBuilder(res.substring(k));
         res.reverse();
         int length = res.length();
         int i;
@@ -44,9 +46,6 @@ public class RemoveKDigits {
         }
         String result = res.substring(i);
         //if all digits removed then return 0
-        if (result.isEmpty()) {
-            return "0";
-        }
-        return result;
+        return result.isEmpty() ? "0" : result;
     }
 }
