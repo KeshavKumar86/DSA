@@ -16,12 +16,12 @@ Space Complexity:O(1)
         for (int element : arr) {
             if (element == 1) {
                 currentMax++;
-            } else {
                 max = Math.max(max, currentMax);
+            } else {
                 currentMax = 0;
             }
         }
-        return Math.max(max, currentMax);
+        return max;
     }
 
     /*
