@@ -23,7 +23,7 @@ public class RotateImage {
     /*
 Naive Solution:
 Time Complexity: O(n*m)
-Space Complexity:O(n*m)
+Space Complexity:O(1)
 */
     private static void rotate(int[][] matrix) {
         int n = matrix.length;
