@@ -21,8 +21,8 @@ public class RotateImage {
     }
 
     /*
-Naive Solution:
-Time Complexity: O(n*m)
+Optimal Solution:
+Time Complexity: O(n^2)
 Space Complexity:O(1)
 */
     private static void rotate(int[][] matrix) {
@@ -34,9 +34,6 @@ Space Complexity:O(1)
                 matrix[row][col] = matrix[col][row];
                 matrix[col][row] = temp;
             }
-        }
-        for (int[] arrayElement : matrix) {
-            System.out.println(Arrays.toString(arrayElement));
         }
         //2. Reverse the rows of the transpose
         for (int row = 0; row < n; row++) {
@@ -53,8 +50,8 @@ Space Complexity:O(1)
 
     /*
 Naive Solution:
-Time Complexity: O(n*m)
-Space Complexity:O(n*m)
+Time Complexity: O(n^2)
+Space Complexity:O(n^2)
 */
     private static void rotateNaive(int[][] mat) {
         int n = mat.length;
