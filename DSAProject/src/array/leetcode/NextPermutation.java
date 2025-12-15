@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class NextPermutation {
     public static void main(String[] args) {
-        int[] arr = {4, 1, 3, 3};
+        int[] arr = {1, 2, 3};
         System.out.println("Original Array: " + Arrays.toString(arr));
         nextPermutationOptimal(arr);
         System.out.println("Next Permutation: " + Arrays.toString(arr));
@@ -15,35 +15,34 @@ Optimal Solution:
 Time Complexity: O(n)
 Space Complexity:O(1)
 */
-    private static void nextPermutationOptimal(int[] arr) {
-        int n = arr.length;
-        boolean flag = false;
+    private static void nextPermutationOptimal(int[] nums) {
+        int n = nums.length;
+        int pivot = -1;
+        // 1. Find pivot
         for (int i = n - 1; i > 0; i--) {
-            if (arr[i] > arr[i - 1]) {
-                int deflectionPoint = i;
-                int toSwap = i - 1;
-                int nextGreater = Integer.MAX_VALUE;
-                int nextGreaterIndex = deflectionPoint;
-                while (deflectionPoint < n) {
-                    if (arr[deflectionPoint] > toSwap) {
-                        if (arr[deflectionPoint] <= nextGreater) {
-                            nextGreater = arr[deflectionPoint];
-                            nextGreaterIndex = deflectionPoint;
-                            deflectionPoint++;
-                        }
-                    }
-                }
-                int temp = arr[toSwap];
-                arr[toSwap] = arr[nextGreaterIndex];
-                arr[nextGreaterIndex] = temp;
-                reverse(arr, i, n - 1);
-                flag = true;
+            if (nums[i - 1] < nums[i]) {
+                pivot = i - 1;
                 break;
             }
         }
-        if (!flag) {
-            reverse(arr, 0, n - 1);
+        // 2. If no pivot, reverse whole array
+        if (pivot == -1) {
+            reverse(nums, 0, n - 1);
+            return;
         }
+        // 3. Find next greater element
+        int nextGreaterIndex = pivot + 1;
+        for (int i = nextGreaterIndex + 1; i < n; i++) {
+            if (nums[i] > nums[pivot] && nums[i] <= nums[nextGreaterIndex]) {
+                nextGreaterIndex = i;
+            }
+        }
+        // 4. swap next greater and pivot
+        int temp = nums[pivot];
+        nums[pivot] = nums[nextGreaterIndex];
+        nums[nextGreaterIndex] = temp;
+        // 5. Reverse the suffix to get the smallest lexicographical order
+        reverse(nums, pivot + 1, n - 1);
     }
 
     private static void reverse(int[] arr, int a, int b) {
@@ -63,38 +62,34 @@ Better Solution:
 Time Complexity: O(n*Logn)
 Space Complexity:O(n)
 */
-    private static void nextPermutation(int[] arr) {
-        int n = arr.length;
-        boolean flag = false;
+    private static void nextPermutation(int[] nums) {
+        int n = nums.length;
+        int pivot = -1;
+        // 1. Find pivot
         for (int i = n - 1; i > 0; i--) {
-            if (arr[i] > arr[i - 1]) {
-                //int index = nextGreater(arr, i - 1, n - 1, arr[i - 1]);
-                int deflectionPoint = i;
-                int toSwap = i - 1;
-                int nextGreater = Integer.MAX_VALUE;
-                int nextGreaterIndex = deflectionPoint;
-                while (deflectionPoint < n) {
-                    if (arr[deflectionPoint] > toSwap) {
-                        if (arr[deflectionPoint] <= nextGreater) {
-                            nextGreater = arr[deflectionPoint];
-                            nextGreaterIndex = deflectionPoint;
-                            deflectionPoint++;
-                        }
-                    }
-                }
-
-                //swap toSwap and next greater element
-                int temp = arr[toSwap];
-                arr[toSwap] = arr[nextGreaterIndex];
-                arr[nextGreaterIndex] = temp;
-                partSort(arr, i, n - 1);
-                flag = true;
+            if (nums[i - 1] < nums[i]) {
+                pivot = i - 1;
                 break;
             }
         }
-        if (!flag) {
-            partSort(arr, 0, n - 1);
+        // 2. If no pivot, reverse whole array
+        if (pivot == -1) {
+            partSort(nums, 0, n - 1);
+            return;
         }
+        // 3. Find next greater element
+        int nextGreaterIndex = pivot + 1;
+        for (int i = nextGreaterIndex + 1; i < n; i++) {
+            if (nums[i] > nums[pivot] && nums[i] <= nums[nextGreaterIndex]) {
+                nextGreaterIndex = i;
+            }
+        }
+        // 4. swap next greater and pivot
+        int temp = nums[pivot];
+        nums[pivot] = nums[nextGreaterIndex];
+        nums[nextGreaterIndex] = temp;
+        // 5. Sort the subarray
+        partSort(nums, pivot + 1, n - 1);
     }
 
     private static void partSort(int[] arr, int a, int b) {
@@ -113,4 +108,12 @@ Space Complexity:O(n)
             j++;
         }
     }
+        /*
+Naive Solution: 1.Generate all permutations
+                2.Sort all the permutations
+                2.Do Linear Search
+                3.find the next permutations
+Time Complexity: O(n × n! + n × n! log(n!))≈ O(n × n! log(n!))
+Space Complexity:O(n!*n)
+*/
 }
