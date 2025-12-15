@@ -5,8 +5,8 @@ import java.util.Map;
 
 public class SubarraySumEqualsK {
     public static void main(String[] args) {
-        int[] arr = {1,2,3};
-        int k = 3;
+        int[] arr = {1, 1, 0, 0, 1, 1};
+        int k = 2;
         System.out.println("Sub-Array Count: " + subarraySum(arr, k));
     }
 
@@ -22,9 +22,7 @@ Space Complexity:O(n)
         map.put(0, 1);
         for (int num : nums) {
             prefixSum += num;
-            if (map.containsKey(prefixSum - k)) {
-                count += map.get(prefixSum - k);
-            }
+            count += map.getOrDefault(prefixSum - k, 0);
             map.put(prefixSum, map.getOrDefault(prefixSum, 0) + 1);
         }
         return count;
