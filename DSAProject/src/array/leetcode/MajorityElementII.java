@@ -43,7 +43,7 @@ Space Complexity:O(1)
             if (element == maj1) {
                 count1++;
             }
-            if (element == maj2) {
+           else if (element == maj2) {
                 count2++;
             }
         }
