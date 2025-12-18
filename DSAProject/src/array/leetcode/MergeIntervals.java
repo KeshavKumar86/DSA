@@ -14,7 +14,11 @@ public class MergeIntervals {
             System.out.print(Arrays.toString(element) + " ");
         }
     }
-
+    /*
+Optimal Solution:
+Time Complexity: O(nlogn)
+Space Complexity:O(n)
+*/
     private static int[][] merge(int[][] intervals) {
         int n = intervals.length;
         int[][] result = new int[n][2];
@@ -35,4 +39,10 @@ public class MergeIntervals {
         System.arraycopy(result, 0, finalResult, 0, index);
         return finalResult;
     }
+        /*
+Naive Solution: We can start with first element and nested-ly check what are all the intervals we can
+merge (It is hard to code, this understanding is enough)
+Time Complexity: O(n^2)
+Space Complexity:O(n)
+*/
 }
