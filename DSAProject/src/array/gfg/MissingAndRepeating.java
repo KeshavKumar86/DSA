@@ -7,16 +7,7 @@ import java.util.Arrays;
 public class MissingAndRepeating {
     public static void main(String[] args) {
         int[] arr = {4, 3, 6, 2, 1, 1};
-        System.out.println("Missing and Repeating Number: " + findTwoElementOptimal3(arr));
-    }
-
-    /*
-Optimal Solution3: Will Modify the input array
-Time Complexity: O(2*n)
-Space Complexity:O(1)
-*/
-    private static ArrayList<Integer> findTwoElementOptimal3(int[] arr) {
-        return null;
+        System.out.println("Missing and Repeating Number: " + findTwoElementOptimal2(arr));
     }
 
     /*
@@ -46,12 +37,11 @@ Space Complexity:O(1)
         result.add(missingNumber);
         return result;
     }
-
     /*
-Optimal Solution1: Will not work for Big Integer values
-Time Complexity: O(n)
-Space Complexity:O(1)
-*/
+  Optimal Solution1: Will not work for Big Integer values
+  Time Complexity: O(n)
+  Space Complexity:O(1)
+  */
     private static ArrayList<Integer> findTwoElementOptimal1(int[] arr) {
         int n = arr.length;
         BigInteger expectedSum = BigInteger.valueOf((long) n * (n + 1) / 2);
@@ -77,9 +67,8 @@ Space Complexity:O(1)
         result.add(missingNumber.intValue());
         return result;
     }
-
     /*
-Better Solution:
+Better Solution: Hashmap will give much better result in this approach
 Time Complexity: O(2*n)
 Space Complexity:O(n)
 */
