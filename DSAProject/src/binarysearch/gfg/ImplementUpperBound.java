@@ -6,26 +6,28 @@ public class ImplementUpperBound {
         int target = 11;
         System.out.println("Element's Index: " + upperBound(arr, target));
     }
+
     /*
 Optimal Solution:
 Time Complexity: O(logn)
 Space Complexity:O(1)
 */
     private static int upperBound(int[] arr, int target) {
-        // code here
         int n = arr.length;
         int left = 0, right = n - 1;
+        int answer = n;
         while (left <= right) {
             int mid = left + (right - left) / 2;
             if (arr[mid] <= target) {
                 left = mid + 1;
-
             } else {
+                answer = mid;
                 right = mid - 1;
             }
         }
-        return left;
+        return answer;
     }
+
     /*
 Naive Solution:
 Time Complexity: O(n)
