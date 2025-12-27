@@ -11,15 +11,15 @@ Optimal Solution:
 Time Complexity: O(n)
 Space Complexity:O(1)
 */
-    private static int maximumSumSubarrayOptimal(int[] arr) {
-        int maxSum = arr[0];
-        int currSum = 0;
-        for (int element : arr) {
-            if (currSum < 0) {
-                currSum = 0;
+    private static int maximumSumSubarrayOptimal(int[] nums) {
+        int maxSum = nums[0];
+        int currentSum = 0;
+        for (int num : nums) {
+            currentSum += num;
+            maxSum = Math.max(maxSum, currentSum);
+            if (currentSum < 0) {
+                currentSum = 0;
             }
-            currSum += element;
-            maxSum = Math.max(maxSum, currSum);
         }
         return maxSum;
     }
