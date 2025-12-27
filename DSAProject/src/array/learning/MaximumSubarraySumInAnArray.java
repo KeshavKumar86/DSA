@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class MaximumSubarraySumInAnArray {
     public static void main(String[] args) {
-        int[] arr = {5, 4, -1, 7, 8};
+        int[] arr = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
         System.out.println("Maximum Subarray: " + Arrays.toString(maximumSumSubarray(arr)));
 
     }
@@ -14,26 +14,27 @@ Optimal Solution:
 Time Complexity: O(n)
 Space Complexity:O(1)
 */
-    private static int[] maximumSumSubarray(int[] arr) {
-        int maxSum = arr[0];
+    private static int[] maximumSumSubarray(int[] nums) {
+        int n = nums.length;
+        int maxSum = nums[0];
         int currSum = 0;
-        int startIndex = 0;
-        int endIndex = 0;
-        for (int i = 0; i < arr.length; i++) {
-            if (currSum < 0) {
-                currSum = 0;
-                startIndex = i;
-                endIndex = i;
+        int startIndex = 0, endIndex = 0;
+        int potentialStart = 0;
+        for (int i = 0; i < n; i++) {
+            if (currSum == 0) {
+                potentialStart = i;
             }
-            currSum += arr[i];
-            if (maxSum < currSum) {
+            currSum += nums[i];
+            if (currSum > maxSum) {
                 maxSum = currSum;
+                startIndex = potentialStart;
                 endIndex = i;
             }
+            currSum = Math.max(currSum, 0);
         }
         int length = endIndex - startIndex + 1;
         int[] res = new int[length];
-        System.arraycopy(arr, startIndex, res, 0, length);
+        System.arraycopy(nums, startIndex, res, 0, length);
         return res;
     }
         /*
