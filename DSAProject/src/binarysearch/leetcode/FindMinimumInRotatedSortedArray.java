@@ -22,6 +22,7 @@ Space Complexity:O(1)
                 right = mid - 1;
             }
         }
+        // if the array is not rotated at all
         return nums[left % n];
     }
 
