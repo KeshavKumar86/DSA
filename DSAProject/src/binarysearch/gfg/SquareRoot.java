@@ -5,46 +5,41 @@ public class SquareRoot {
         int n = 101;
         System.out.println("Square Root of " + n + " is: " + floorSqrtOptimal(n));
     }
+
     /*
 Optimal Solution:
 Time Complexity: O(logn)
 Space Complexity:O(1)
 */
     private static int floorSqrtOptimal(int n) {
-        // code here
         int left = 0, right = n;
+        int ans = 0;
         while (left <= right) {
             int mid = left + (right - left) / 2;
             long square = (long) mid * mid;
-            if (square == n) {
-                return mid;
-            }
-            if (square > n) {
-                right = mid - 1;
-            } else {
+            if (square <= n) {
+                ans = mid;
                 left = mid + 1;
+            } else {
+                right = mid - 1;
             }
         }
-        return right;
+        return ans;
     }
+
     /*
 Naive Solution:
 Time Complexity: O(n)
 Space Complexity:O(1)
 */
     private static int floorSqrt(int n) {
-        // code here
-        if (n == 1) {
-            return 1;
+        int num = 1;
+        while (num * num < n) {
+            num++;
         }
-        int i;
-        for (i = 1; i < n / 2 + 1; i++) {
-            if (i * i == n) {
-                return i;
-            } else if (i * i > n) {
-                return i - 1;
-            }
+        if (num * num == n) {
+            return num;
         }
-        return i - 1;
+        return num - 1;
     }
 }
