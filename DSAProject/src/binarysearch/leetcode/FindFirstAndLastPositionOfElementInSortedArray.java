@@ -15,15 +15,15 @@ Time Complexity: O(2*logn)
 Space Complexity:O(1)
 */
     private static int[] searchRange(int[] nums, int target) {
-        int firstIndex = binSearch(nums, target, true);
+        int firstIndex = numberPosition(nums, target, true);
         if (firstIndex == -1) {
             return new int[]{-1, -1};
         }
-        int lastIndex = binSearch(nums, target, false);
+        int lastIndex = numberPosition(nums, target, false);
         return new int[]{firstIndex, lastIndex};
     }
 
-    private static int binSearch(int[] nums, int target, boolean firstOccurence) {
+    private static int numberPosition(int[] nums, int target, boolean firstPosition) {
         int left = 0;
         int right = nums.length - 1;
         int resIndex = -1;
@@ -31,7 +31,7 @@ Space Complexity:O(1)
             int mid = left + (right - left) / 2;
             if (nums[mid] == target) {
                 resIndex = mid;
-                if (firstOccurence) {
+                if (firstPosition) {
                     right = mid - 1;
                 } else {
                     left = mid + 1;
@@ -50,21 +50,11 @@ Space Complexity:O(1)
         int firstIndex = -1, lastIndex = -1;
         for (int i = 0; i < n; i++) {
             if (nums[i] == target) {
-                firstIndex = i;
-                break;
+                if (firstIndex == -1) {
+                    firstIndex = i;
+                }
+                lastIndex = i;
             }
-        }
-        for (int i = firstIndex + 1; i < n; i++) {
-            if (nums[i] > target) {
-                lastIndex = i - 1;
-                break;
-            }
-        }
-        if (firstIndex == -1) {
-            return new int[]{-1, -1};
-        }
-        if (lastIndex == -1) {
-            return new int[]{firstIndex, n - 1};
         }
         return new int[]{firstIndex, lastIndex};
     }
