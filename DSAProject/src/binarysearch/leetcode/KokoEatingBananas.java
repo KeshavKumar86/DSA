@@ -17,8 +17,8 @@ Space Complexity:O(1)
         int res = right;
         while (left <= right) {
             int mid = left + (right - left) / 2;
-            if (totalHoursReq(piles, mid) <= h) {
-                res = Math.min(res, mid);
+            if (isPossible(piles, mid, h)) {
+                res = mid;
                 right = mid - 1;
             } else {
                 left = mid + 1;
@@ -26,6 +26,7 @@ Space Complexity:O(1)
         }
         return res;
     }
+
     /*
 Naive Solution:
 Time Complexity: O(n*m)
@@ -34,24 +35,25 @@ Space Complexity:O(1)
     private static int minEatingSpeed(int[] piles, int h) {
         int max = max(piles);
         for (int i = 1; i <= max; i++) {
-            if (totalHoursReq(piles, i) <= h) {
+            if (isPossible(piles, i, h)) {
                 return i;
             }
         }
         return max;
     }
 
-    private static long totalHoursReq(int[] piles, int k) {
+    private static boolean isPossible(int[] piles, int speed, int expectedHours) {
         long totalHours = 0;
         for (int pile : piles) {
-            long divison = pile / k;
-            if (pile % k == 0) {
-                totalHours += divison;
+            int num = pile / speed;
+            if (pile % speed == 0) {
+                totalHours += num;
             } else {
-                totalHours += divison + 1;
+                totalHours += (num + 1);
             }
+
         }
-        return totalHours;
+        return totalHours <= expectedHours;
     }
 
     private static int max(int[] arr) {
