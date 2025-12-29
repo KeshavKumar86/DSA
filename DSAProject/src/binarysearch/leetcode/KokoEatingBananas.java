@@ -43,6 +43,7 @@ Space Complexity:O(1)
     }
 
     private static boolean isPossible(int[] piles, int speed, int expectedHours) {
+        // long is mandatory otherwise overflow will happen
         long totalHours = 0;
         for (int pile : piles) {
             int num = pile / speed;
